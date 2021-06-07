@@ -11,5 +11,7 @@ YTParser is a program for extracting links from the latest videos of YouTube cha
 This program was created for Impression-Agency ([https://impression-agency.ru/](https://impression-agency.ru/)), a Moscow based advertising agency, specialising in working with car YouTubers. 
 
 # Manuals
+Manuals in [English](YTParser%Manual.pdf) and [Russian](YTParser%Справочник.pdf) explain how to use the program.
 
-"YTParser Manual.pdf" and "YTParser Справочник.pdf" are manuals for using the program in English and Russian respectively.
+# Built Jar File 
+A pre-built Java executable can be found [here](/out/artifacts/YTParser_jar/YTParser.jar). 

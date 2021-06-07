@@ -3,8 +3,7 @@ import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.nio.file.*;
 
 public class Parser {
     private static final int CHANNEL_NAME = 0;
@@ -24,9 +23,13 @@ public class Parser {
             Reader in = new FileReader(path);
             csvRecords = CSVFormat.EXCEL.parse(in);
 
-            BufferedWriter stringWriter = new BufferedWriter(Files.newBufferedWriter(Path.of(updatedPath)));
-            csvPrinter = new CSVPrinter(stringWriter, CSVFormat.DEFAULT.withHeader("CHANNEL_NAME", "CHANNEL_LINK", "CHANNEL_ID", "Latest Video Description Links"));
+//            Path update = Path.of(updatedPath);
+//            BufferedWriter stringWriter = new BufferedWriter(Files.newBufferedWriter(update));
+//            csvPrinter = new CSVPrinter(stringWriter, CSVFormat.DEFAULT.withHeader("CHANNEL_NAME", "CHANNEL_LINK", "CHANNEL_ID", "Latest Video Description Links"));
 
+
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(updatedPath));
+            csvPrinter = new CSVPrinter(bufferedWriter,CSVFormat.DEFAULT.withHeader("CHANNEL_NAME", "CHANNEL_LINK", "CHANNEL_ID", "Latest Video Description Links"));
         } catch (FileNotFoundException e) {
             System.out.println("FILE NOT FOUND");
         } catch (IOException e) {

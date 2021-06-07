@@ -31,10 +31,10 @@ public class FileChooser extends JFrame implements ActionListener {
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         openButton = new JButton("Select List");
-        openButton.addActionListener(this::actionPerformed);
+        openButton.addActionListener(this);
 
         nextButton = new JButton("Next");
-        nextButton.addActionListener(this::actionPerformed);
+        nextButton.addActionListener(this);
 
 
         jPanel = new JPanel();
@@ -58,17 +58,22 @@ public class FileChooser extends JFrame implements ActionListener {
         } else if(evt.getSource()==nextButton){
             openButton.setVisible(false);
             nextButton.setVisible(false);
-            String updatedPath = "C:/Users/druma/Downloads/list-updated.csv";
+            String updatedPath = getUpdatedPath(path);
             jLabel.setText("Trying");
 
-//            try {
-//                MyTest.execute(path,updatedPath);
-//            } catch (GeneralSecurityException e) {
-//                e.printStackTrace();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
+            try {
+                MyTest.execute(path,updatedPath);
+            } catch (GeneralSecurityException | IOException e) {
+                e.printStackTrace();
+            }
         }
+    }
+
+    public String getUpdatedPath(String fullPath){
+        int index = fullPath.lastIndexOf("/");
+        String fileName = fullPath.substring(index + 1);
+        String updatedName = fileName.replace(".","-UPDATED.");
+        return fullPath.replace(fileName,updatedName);
     }
 
 

@@ -58,7 +58,7 @@ public class MyTest {
     }
 
     //My Code:
-    public static void execute(String path, String updatedPath)
+    public static void execute(String path, String updatedPath, JLabel jLabel)
             throws GeneralSecurityException, IOException, GoogleJsonResponseException {
         Parser parser = new Parser();
         parser.parse(path,updatedPath);
@@ -80,6 +80,9 @@ public class MyTest {
 
                 csvPrinter.printRecord(record.get(Parser.getChannelName()),record.get(Parser.getChannelLink()),record.get(Parser.getChannelID()),conc_links);
                 csvPrinter.flush();
+
+                final int num = i;
+                SwingUtilities.invokeLater(() -> jLabel.setText("Done: " + num));
             }catch (IOException e){
                 System.out.println("FAIL: " + i + " " + record.get(Parser.getChannelName()));
             }
@@ -87,6 +90,8 @@ public class MyTest {
             i++;
         }
         //"CHANNEL_NAME", "CHANNEL_LINK", "CHANNEL_ID", "Latest Video Description Links"
+
+        jLabel.setText("Finished!");
     }
 
     private static String getLatestVideoDescription(String channel_id, YouTube youtubeService) throws GeneralSecurityException, IOException {

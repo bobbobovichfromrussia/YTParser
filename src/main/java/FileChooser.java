@@ -61,11 +61,19 @@ public class FileChooser extends JFrame implements ActionListener {
             String updatedPath = getUpdatedPath(path);
             jLabel.setText("Trying");
 
-            try {
-                MyTest.execute(path,updatedPath);
-            } catch (GeneralSecurityException | IOException e) {
-                e.printStackTrace();
-            }
+//            try {
+//                MyTest.execute(path,updatedPath);
+//            } catch (GeneralSecurityException | IOException e) {
+//                e.printStackTrace();
+//            }
+
+            new Thread(() -> {
+                try{
+                    MyTest.execute(path,updatedPath,jLabel);
+                } catch (GeneralSecurityException | IOException e) {
+                    e.printStackTrace();
+                }
+            }).start();
         }
     }
 

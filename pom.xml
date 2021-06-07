@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>15</source>
+                    <target>15</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
+    <dependencies>
+            <dependency>
+                <groupId>com.google.api-client</groupId>
+                <artifactId>google-api-client</artifactId>
+                <version>1.31.2</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-csv -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-csv</artifactId>
+                <version>1.8</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.google.oauth-client/google-oauth-client-jetty -->
+            <dependency>
+                <groupId>com.google.oauth-client</groupId>
+                <artifactId>google-oauth-client-jetty</artifactId>
+                <version>1.31.5</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.google.apis/google-api-services-youtube -->
+            <dependency>
+                <groupId>com.google.apis</groupId>
+                <artifactId>google-api-services-youtube</artifactId>
+                <version>v3-rev222-1.25.0</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.google.api-client/google-api-client-jackson2 -->
+            <dependency>
+                <groupId>com.google.api-client</groupId>
+                <artifactId>google-api-client-jackson2</artifactId>
+                <version>1.20.0</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.openjfx/javafx -->
+            <dependency>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx</artifactId>
+                <version>11</version>
+                <type>pom</type>
+            </dependency>
+    </dependencies>
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>YTParser</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>16</maven.compiler.source>
+        <maven.compiler.target>16</maven.compiler.target>
+    </properties>
+
+</project>

@@ -15,3 +15,12 @@ Manuals in [English](YTParser%Manual.pdf) and [Russian](YTParser%Справоч�
 
 # Built Jar File 
 A pre-built Java executable can be found [here](/out/artifacts/YTParser_jar/YTParser.jar). 
+
+# Example 
+Sample input: 
+![Sample Output](sample_output.png)
+
+Running the program with the sample input produces this output: 
+
+![Sample Input](sample_input.png)
+

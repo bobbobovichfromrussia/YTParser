@@ -137,44 +137,6 @@ public class MyTest {
 
 
 /*
-public static void main(String[] args)
-            throws GeneralSecurityException, IOException, GoogleJsonResponseException {
-        String path = "C:/Users/druma/Downloads/list.csv";
-        String updatedPath = "C:/Users/druma/Downloads/list-updated.csv";
-
-        Parser parser = new Parser();
-        parser.parse(path,updatedPath);
-        Iterable<CSVRecord> csvRecords = parser.getCsvRecords();
-        CSVPrinter csvPrinter = parser.getCsvPrinter();
-        YouTube youtubeService = getService();
-
-        int i=1;
-        for(CSVRecord record : csvRecords){
-            try{
-                String channel_id = record.get(Parser.getChannelID());
-                String description = getLatestVideoDescription(channel_id,youtubeService);
-                List<String> links = getLinks(description);
-
-                String conc_links = "";
-                for(String link : links){
-                    conc_links += link + "\n";
-                }
-
-                csvPrinter.printRecord(record.get(Parser.getChannelName()),record.get(Parser.getChannelLink()),record.get(Parser.getChannelID()),conc_links);
-                csvPrinter.flush();
-            }catch (IOException e){
-                System.out.println("FAIL: " + i + " " + record.get(Parser.getChannelName()));
-            }
-            i++;
-        }
-
-        //"CHANNEL_NAME", "CHANNEL_LINK", "CHANNEL_ID", "Latest Video Description Links"
-
-    }
- */
-
-
-/*
 NB:
 
 https://www.googleapis.com/youtube/v3/search?key={your_key_here}&channelId={channel_id_here}&part=snippet,id&order=date&maxResults=20

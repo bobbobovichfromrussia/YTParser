@@ -24,7 +24,8 @@ public class Parser {
             Reader in = new FileReader(path);
             csvRecords = CSVFormat.EXCEL.parse(in);
 
-            BufferedWriter stringWriter = new BufferedWriter(Files.newBufferedWriter(Path.of(updatedPath)));
+            //BufferedWriter stringWriter = new BufferedWriter(Files.newBufferedWriter(Path.of(updatedPath)));
+            BufferedWriter stringWriter = new BufferedWriter(new FileWriter(updatedPath));
             csvPrinter = new CSVPrinter(stringWriter, CSVFormat.DEFAULT.withHeader("CHANNEL_NAME", "CHANNEL_LINK", "CHANNEL_ID", "Latest Video Description Links"));
 
         } catch (FileNotFoundException e) {

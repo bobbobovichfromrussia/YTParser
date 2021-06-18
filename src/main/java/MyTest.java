@@ -35,6 +35,7 @@ public class MyTest {
     private static final String APPLICATION_NAME = "API code samples";
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
 
+    private static final String[] FILTERS = {"vk","music","instagram","tiktok"};
 
     public static Credential authorize(final NetHttpTransport httpTransport) throws IOException {
         // Load client secrets.
@@ -73,10 +74,12 @@ public class MyTest {
                 String description = getLatestVideoDescription(channel_id,youtubeService);
                 List<String> links = getLinks(description);
 
-                String conc_links = "";
-                for(String link : links){
-                    conc_links += link + "\n";
-                }
+//                String conc_links = "";
+//                for(String link : links){
+//                    conc_links += link + "\n";
+//                }
+
+                String conc_links = filterLinks(links);
 
                 csvPrinter.printRecord(record.get(Parser.getChannelName()),record.get(Parser.getChannelLink()),record.get(Parser.getChannelID()),conc_links);
                 csvPrinter.flush();
@@ -84,6 +87,10 @@ public class MyTest {
                 final int num = i;
                 SwingUtilities.invokeLater(() -> jLabel.setText("Done: " + num));
             }catch (IOException e){
+                System.out.println("FAIL: " + i + " " + record.get(Parser.getChannelName()));
+            } catch (NullPointerException e){
+                System.out.println("FAIL: " + i + " " + record.get(Parser.getChannelName()));
+            } catch (Exception e){
                 System.out.println("FAIL: " + i + " " + record.get(Parser.getChannelName()));
             }
             System.out.println("Done: " + i);
@@ -94,8 +101,23 @@ public class MyTest {
         jLabel.setText("Finished!");
     }
 
-    private static String getLatestVideoDescription(String channel_id, YouTube youtubeService) throws GeneralSecurityException, IOException {
+    private static String filterLinks(List<String> links){
+        String conc_links = "";
+        for(String link : links){
+            for(String FILTER : FILTERS){
+                if(link.contains(FILTER)){
+                    link = "";
+                }
+            }
 
+            if(link.length() > 0){
+                conc_links += link + "\n";
+            }
+        }
+        return conc_links;
+    }
+
+    private static String getLatestVideoDescription(String channel_id, YouTube youtubeService) throws GeneralSecurityException, IOException {
         YouTube.Channels.List request = youtubeService.channels()
                 .list("snippet,contentDetails");
         ChannelListResponse response = request.setId(channel_id).execute();
